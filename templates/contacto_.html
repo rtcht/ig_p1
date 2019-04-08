@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+	{% block contenido %}
+	{% from "_macro.html" import contacto %}
+
+	<form method="POST">
+
+<div class="container">
+	{{ contacto(form.name) }}
+	{{ cuestionario(form.app) }}
+	{{ cuestionario(form.mail) }}
+	{{ cuestionario(form.text) }}
+</div>
+	
+
+	<button type="submit" class="btn btn-primary" aria-pressed="false" autocomplete="off">
+	  Send
+	</button>
+	
+<input type="hidden" name=" csrf_token" value="{{ csrf_token() }}">
+
+	</form>
+
+{% endblock %}

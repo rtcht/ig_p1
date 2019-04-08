@@ -1,0 +1,274 @@
+{% extends 'base/base.html' %}
+
+{% block estilos %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="{{ url_for ('static',filename = 'scss/style.scss') }}">
+{% endblock %}
+
+{% block contenido %}
+{% from "_macro.html" import contacto %}
+
+<form method="POST" action="{{ url_for ('cotizacion') }}">
+    <br>
+    <br>
+    <br>
+    <div class="container">
+      <h1 class="display-3">Cotiza tu Holograma.</h1>
+      <p class="lead">Los siguientes pasos te ayudaran a seleccionar el holograma que mas te convenga.</p>
+    </div>
+    <br>
+    <hr>
+    <!-- paso 1-->
+    <div class="container">
+      <div class="row">
+        <div id="tabla" class="col-12">
+          <h3 id="but2" class="display-4">Selecciona el Tamaño.</h3>
+          <div class="row">
+            <div id="tabla" class="col-4">
+              aquí va una imagen referenciando el tamaño
+
+<!-- estos botones no los borren!!!!
+  <div class="radio">
+    <input id="radio-1" name="radio" type="radio" checked>
+    <label for="radio-1" class="radio-label">Checked</label>
+  </div>
+
+  <div class="radio">
+    <input id="radio-2" name="radio" type="radio">
+    <label  for="radio-2" class="radio-label">Unchecked</label>
+  </div>
+
+  <div class="radio">
+    <input id="radio-3" name="radio" type="radio" disabled>
+    <label for="radio-3" class="radio-label">Disabled</label>
+  </div>
+-->
+
+            </div>
+
+            <div id="tabla" class="col-8 ">
+              <div class="row justify-content-center">
+                <div id="tabla" class="col-4">
+                  <div class="radio">
+                    <input id="tamanio_holograma1" name="tamanio_holograma" type="radio" value="5000">
+                    <label for="tamanio_holograma1" class="radio-label">Chico</label>
+                  </div>
+    <!--Boton viejo
+                <div id="but" class="radio">
+                  <input class="form-check-input" type="radio" name="tamanio_holograma" id="tamanio_holograma" value="5000">
+                  <label class="form-check-label" for="inlineRadio1"></label>
+                </div>
+                -->
+                </div>
+            <div id="tabla" class="col-4 ">
+              <div class="radio">
+                <input id="tamanio_holograma2" name="tamanio_holograma" type="radio" value="7000">
+                <label  for="tamanio_holograma2" class="radio-label">Mediano</label>
+              </div>
+          <!--Boton viejo
+                <div id="but" class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="tamanio_holograma" id="tamanio_holograma" value="7000">
+                  <label class="form-check-label" for="inlineRadio1"></label>
+                </div>
+              -->
+            </div>
+            <div id="tabla" class="col-4 ">
+              <div class="radio">
+                <input id="tamanio_holograma3" name="tamanio_holograma" type="radio" value="9000">
+                <label  for="tamanio_holograma3" class="radio-label">Grande</label>
+              </div>
+              <!--Boton viejo
+                <div id="but" class="form-check form-check-inline" >
+                  <input class="form-check-input" type="radio" name="tamanio_holograma" id="tamanio_holograma" value="9000">
+                  <label class="form-check-label" for="inlineRadio1"></label>
+                </div>-->
+            </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<hr>
+    <!-- paso 2-->
+  <div class="container">
+    <div class="row">
+      <div id="tabla" class="col-12">
+        <h3 id="but2" class="display-4">Selecciona el Tipo de Ambiente.</h3>
+          <div class="row">
+            <div id="tabla" class="col-4">
+            aquí va una imagen diferenciando la iluminación.
+            </div>
+            <div id="tabla" class="col-8 ">
+                <div class="row justify-content-center">
+            <div id="tabla" class="col-6">
+              <div class="radio">
+                <input id="ambiente_holograma1" name="ambiente_holograma" type="radio" value="1500" >
+                <label for="ambiente_holograma1" class="radio-label">Iluminado</label>
+              </div>
+              <!-- boton viejo
+              <div id="but" class="form-check form-check-inline" >
+                  <input class="form-check-input" type="radio" name="tipo_holograma" id="tipo_holograma" value="1500">
+                  <label class="form-check-label" for="inlineRadio1"></label>
+                </div>
+              -->
+
+            </div>
+            <div id="tabla" class="col-6 ">
+              <div class="radio">
+                <input id="ambiente_holograma2" name="ambiente_holograma" type="radio" value="1200">
+                <label  for="ambiente_holograma2" class="radio-label">Oscuro</label>
+              </div>
+            <!--boton viejo
+              <div id="but" class="form-check form-check-inline" >
+                  <input class="form-check-input" type="radio" name="tipo_holograma" id="tipo_holograma" value="1200">
+                  <label class="form-check-label" for="inlineRadio1"></label>
+                </div>
+              -->
+            </div>
+          </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<hr>
+    <!-- paso 3-->
+    <div class="container">
+      <div class="row">
+        <div id="tabla" class="col-12">
+          <h3 id="but2" class="display-4">Selecciona el Estilo.</h3>
+          <div class="row">
+            <div id="tabla" class="col-4">
+            aquí va una imagen referenciando el acabado
+            </div>
+            <div id="tabla" class="col-8 ">
+              <div class="row justify-content-center">
+                <div id="tabla" class="col-4">
+                  <div class="radio">
+                    <input id="estilo_holograma1" name="estilo_holograma" type="radio" value="2100">
+                    <label for="estilo_holograma1" class="radio-label">Madera</label>
+                  </div>
+   <!--Boton viejo
+            <div id="but" class="form-check form-check-inline" >
+                  <input class="form-check-input" type="radio" name="mat_holograma" id="mat_holograma" value="2100">
+                  <label class="form-check-label" for="inlineRadio1"></label>
+                </div>
+              -->
+            </div>
+            <div id="tabla" class="col-4 ">
+              <div class="radio">
+                <input id="estilo_holograma2" name="estilo_holograma" type="radio" value="9000">
+                <label  for="estilo_holograma2" class="radio-label">Aluminio</label>
+              </div>
+  <!-- boton viejo
+            <div id="but" class="form-check form-check-inline" >
+                  <input class="form-check-input" type="radio" name="mat_holograma" id="mat_holograma" value="4000">
+                  <label class="form-check-label" for="inlineRadio1"></label>
+                </div>
+              -->
+            </div>
+<!--este chisme es por si quieren otro acabado-->
+          <!--  <div id="tabla" class="col-4 ">
+            	<img src="{{ url_for('static', filename = 'image/cf.png')}}" alt="wood" class="img-thumbnail">
+            <p id="txt" >Otros</p>
+            <div id="but" class="form-check form-check-inline" >
+                  <input class="form-check-input" type="radio" name="mat_holograma" id="mat_holograma" value="5000">
+                  <label class="form-check-label" for="inlineRadio1"></label>
+                </div>-->
+            </div>
+          </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<hr>
+    <!-- paso 4-->
+    <div class="container">
+      <div class="row">
+        <div id="tabla" class="col-12">
+         <h3 id="but2" class="display-4">Selecciona el Tipo de Holograma.</h3>
+          <div class="row">
+            <div id="tabla" class="col-4">
+            aquí va una imagen referenciando los tipos de hologramas
+            </div>
+            <div id="tabla" class="col-8 ">
+                <div class="row justify-content-center">
+            <div id="tabla" class="col-4">
+              <div class="radio">
+                <input id="tipo_holograma1" name="tipo_holograma" type="radio" value="7000">
+                <label for="tipo_holograma1" class="radio-label">Estatico</label>
+              </div>
+      <!--boton viejo
+            <div id="but" class="form-check form-check-inline" >
+                  <input class="form-check-input" type="radio" name="estilo_holograma" id="estilo_holograma" value="600">
+                  <label class="form-check-label" for="inlineRadio1"></label>
+                </div>
+      -->
+            </div>
+            <div id="tabla" class="col-4 ">
+              <div class="radio">
+                <input id="tipo_holograma2" name="tipo_holograma" type="radio" value="8000">
+                <label  for="tipo_holograma2" class="radio-label">Dinamico</label>
+              </div>
+   <!--Boton viejo
+            <div id="but" class="form-check form-check-inline" >
+                  <input class="form-check-input" type="radio" name="estilo_holograma" id="estilo_holograma" value="2800">
+                  <label class="form-check-label" for="inlineRadio1"></label>
+                </div>
+              -->
+            </div>
+            <div id="tabla" class="col-4 ">
+              <div class="radio">
+                <input id="tipo_holograma3" name="tipo_holograma" type="radio" value="9000">
+                <label  for="tipo_holograma3" class="radio-label">Informativo</label>
+              </div>
+            <!--boton viejo
+            <div id="but" class="form-check form-check-inline" >
+                  <input class="form-check-input" type="radio" name="estilo_holograma" id="estilo_holograma" value="1400">
+                  <label class="form-check-label" for="inlineRadio1"></label>
+                </div>
+              -->
+            </div>
+          </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <hr>
+    <div class="container">
+         <div class="row">
+        <div class="col-12">
+          <p class="lead">Si deseas que te enviemos el PDF por favor completa los siguientes campos:</p>
+            <div class="container">
+              <div class="row footer">
+                <div class="col-md-5">
+                  {{ contacto(form.name, class_='form-control', placeholder='Nombre') }}
+                  <br>
+                  {{ contacto(form.email, class_='form-control', placeholder='Correo') }}
+                  <br>
+                <br>
+          </div>
+        </div>
+      </div>
+  </div>
+      
+    </div>
+    <div id="but2">
+      <div class="container">
+        <button type="submit" class="btn btn-outline-dark">Enviar</button>
+      </div>
+    </div>
+  </div>
+<br>
+<br>
+
+      <input type="hidden" name=" csrf_token" value="{{ csrf_token() }}">
+</form>
+
+{% endblock %}

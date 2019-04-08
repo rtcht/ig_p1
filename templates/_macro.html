@@ -1,0 +1,16 @@
+{% macro contacto (objeto) %}
+
+	<!--<dt>{{ objeto.label }}</dt>-->
+	<dd>{{ objeto(**kwargs) | safe }}</dd>
+
+	{% if objeto.errors %}
+		<ul>
+			{%for error in objeto.errors %}
+			<li> {{ error }} </li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+
+{% endmacro%}
+
+

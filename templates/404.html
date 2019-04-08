@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% block contenido %}
+<br>
+<br>
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+  		<div class="row">
+  			<div class="col-4">
+	   			<h1 class="display-2">404!</h1>
+	    		<p class="lead">This is not the page you're looking for!!</p>
+    		</div>
+    		<div class="col-8">
+    			<img src="{{ url_for('static', filename = 'image/404.gif') }}" >
+    		</div>
+  		</div>
+	</div>
+	<br>
+	<div class="container" align="center">
+		<button type="button" class="btn btn-outline-dark" onClick="window.history.back()">Back</button>
+	</div>
+</div>
+{% endblock %}

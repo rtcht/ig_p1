@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<head>
+ 	<!-- Required meta tags -->
+ 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!--icon-->
+  <link rel="shortcut icon" href="{{ url_for('static', filename = 'image/log.ico') }}">
+ 	<!-- Bootstrap CSS -->
+  	<link rel="stylesheet" type="text/css" href="{{ url_for ('static',filename = 'css/bootstrap.min.css') }}">
+  	<link rel="stylesheet" type="text/css" href="{{ url_for ('static',filename = 'css/mycss.css') }}">
+    {% block estilos %}
+    {% endblock %}
+  <title>IngeniumDevelopers</title>
+</head>
+<body>
+  
+<!-- Navigation -->
+<!--<nav  id="barra_p" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">-->
+<nav  id="barra_p" class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+  	<img src="{{ url_for('static', filename = 'image/logx1.png') }}">
+    <a class="navbar-brand" href="{{ url_for ('index' )}}"> &ensp; Ingenium Developers</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+
+
+        <li class="nav-item {% if sitio=='index' %} active {% endif %}">
+        	<a class="nav-link" href="{{ url_for ('index' )}}">Home<span class="sr-only">(current)</span>
+            </a>
+        </li>
+        <li class="nav-item {% if sitio=='nosotros' %} active {% endif %}">
+          <a class="nav-link" href="{{ url_for ('about') }}">Nosotros</a>
+        </li>
+     	 <li class="nav-item {% if sitio=='holograma' %} active {% endif %}">
+          <a  class="nav-link" href="{{ url_for ('holo') }}">Holograma</a>
+        </li>
+        <li class="nav-item {% if sitio=='contacto' %} active {% endif %}">
+          <a class="nav-link" href="{{ url_for ('contacto') }}">Contacto</a>
+        </li>
+         <li class="nav-item {% if sitio=='faq' %} active {% endif %}">
+          <a class="nav-link" href="{{ url_for ('faq') }}">FAQ</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!--welcome-->
+  {% block contenido %}
+
+
+  {% endblock %}
+<!-- footer-->    
+      <div id="footer" class="container-fluid">
+  <div class="row justify-content-between">
+      <div class="col-1">
+        <br>
+          <a id="f1" class="link" href="{{ url_for ('index' )}}">Home</a>
+          <br>
+          <a id="f1" class="link" href="{{ url_for ('about') }}">Nosotros</a>
+          <br>
+          <a id="f1" class="link" href="{{ url_for ('holo') }}">Holograma</a>
+          <br>
+          <a id="f1" class="link" href="{{ url_for ('contacto') }}">Contacto</a>
+          <br>
+          <a id="f1" class="link" href="{{ url_for ('faq') }}">FAQ</a>
+          <br>
+          <br>
+      </div>
+<!--Social Media-->
+		<div class="col-4">
+		<br>
+			<ul class="list-inline">
+				<li class="list-inline-item">
+					<a id="f1" href="https://www.facebook.com/ingenium.developers/" target="_blank">
+		 				<ion-icon name="logo-facebook" size="large"></ion-icon>
+		 			</a>
+				</li>
+				<li class="list-inline-item">
+					<a id="f1"  href="https://twitter.com/develepers"  target="_blank">
+		  				<ion-icon name="logo-twitter" size="large"></ion-icon>
+		  			</a>
+				</li>
+				<li class="list-inline-item">
+					<a id="f1" href="https://www.youtube.com/channel/UCgGNocuYeYNQ7BMqs2bNznQ?view_as=subscriber"  target="_blank">
+		    			<ion-icon name="logo-youtube" size="large"></ion-icon>
+		    		</a>
+				</li>
+			</ul>
+        <p id="f2" > Powered by Ingenium Developers © 2019 - CUGS </p>
+    	</div>
+  	</div>
+</div>
+<!-- Optional JavaScript -->
+    <!--jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<!--Ionicon-->
+	<script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
+</body>
+</html>

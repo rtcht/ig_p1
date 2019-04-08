@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% block contenido %}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<section>
+	<div class="container">
+  		<div class="row">
+  			<div class="col-12">
+	   			<h2  align="justify">Tu holograma costara $ {{ precio }} pesos y estará listo para el día
+          {{ fecha_estimada }}!!</h2>
+          <br>
+	    		<p class="lead">Si quieres descargar el PDF por favor da clic 
+				<a href="{{ url_for ('cotizacion')}}">aquí</a></p>
+    		</div>
+      </div>
+    </div>
+    </section>
+
+
+
+
+{% endblock %}

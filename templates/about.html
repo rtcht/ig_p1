@@ -1,0 +1,77 @@
+{% extends 'base/base.html' %}
+{% block contenido %}
+<!-- Page Content-->
+<br>
+<br>
+<section class="py-5">
+	<div class="container">
+	    <h1  id="but2" class="font-weight-light">Ingenium Developers</h1>
+	    <br>
+	   	<p id="pr1" class="lead"> Somos una empresa creada por jovenes ingenieros, impulsados por el ímpetu de innovar!</p>
+        aqui va una foto mamalona de todos xD
+	</div>
+  <hr>
+</section>
+<section class="py-5">
+  <div class="container">
+  	<div class="row" >
+  		<div class="col-6">
+  			<h1 class="font-weight-light">Misión.</h1>
+    			<br>
+    			<p id="pr1" class="lead">Se tiene como misión contribuir al desarrollo de una nueva tecnología económica y sustentable, a través de proyectos innovadores, para la satisfacción del cliente.
+    			</p> 
+  		</div>
+  		<div class="col-6" >
+  			<h1 class="font-weight-light">Visión.</h1>
+    		<br>
+    		<p id="pr1" class="lead">Innovadores de vanguardia en el ámbito tecnológico. Con altos valores éticos y con un gran compromiso social que corresponde al desarrollo de tecnologías sustentables y económicas
+    		</p> 
+  		</div>
+  	</div>
+  </div>
+</section>
+<br>
+<hr>
+<section class="details-card">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card-content">
+                    <div class="card-img">
+                        <img src="{{ url_for('static', filename = 'image/sc.png')}}" alt="fairy">
+                    </div>
+                    <div class="card-desc">
+                        <p id="pr1">Un equipo de investigadores de las Universidades de Tsukuba, Utsunomiya, Tokio, y del Instituto Tecnológico de Nagoya han creado hologramas láser para ser inocuos para el ser humano.</p>
+                            <a href="https://es.gizmodo.com/descubren-como-proyectar-hologramas-laser-que-se-pueden-1714185471" class="btn-card" target="_blank">Saber mas...</a>   
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-content">
+                    <div class="card-img">
+                        <img src="{{ url_for('static', filename = 'image/sc2.png')}}" alt="R2d2">
+                    </div>
+                    <div class="card-desc">
+                        <p id="pr1">Un equipo de científicos de la Universidad Nacional Australiana ha desarrollado un dispositivo que crear imágenes holográficas, inspirado  en peliculas como Star Wars. </p>
+                            <a href="https://es.gizmodo.com/prueban-con-exito-un-sistema-de-hologramas-en-tres-dime-1791626209/amp" 
+                            class="btn-card" target="_blank">Saber mas...</a>   
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-content">
+                    <div class="card-img">
+                        <img src="{{ url_for('static', filename = 'image/sc3.png')}}" alt="TieF">
+                    </div>
+                    <div class="card-desc">
+                        <p id="pr1">Es probable que ya has escuchado la banda sonora de The Force Awakens. Pero Disney acaba de publicar la edición en vinilo de la nueva banda sonora y es capaz de mostrar hologramas. ¡Hologramas!</p>
+                            <a href="https://es.gizmodo.com/la-banda-sonora-de-the-force-awakens-en-vinilo-muestra-1778847500" class="btn-card" target="_blank"> saber mas...</a>   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+{% block contenido %}
+<br>
+<br>
+<br>
+<h1>cuestionario correcto</h1>
+
+<meta http-equiv="Refresh" content="20; url= "{{ url_for ('index' )}}">
+<br>
+<br>
+<br>
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+  		<div class="row">
+  			<div class="col-8">
+	   			<h1 class="display-2">tenemos tu info!!</h1>
+	    		<p class="lead">En unos segundos serás enviado automáticamente al inicio. Si no te gusta esperar, puedes dar click 
+				<a href="{{ url_for ('index' )}}">aquí</a></p>
+    		</div>
+    		<div class="col-4">
+    			<img src="{{ url_for('static', filename = 'image/404.gif') }}" >
+    		</div>
+  		</div>
+	</div>
+</div>
+
+
+<p></p>
+
+
+{% endblock %}
