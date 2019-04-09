@@ -37,13 +37,14 @@ def holo():
 
 @app.route('/cotizacion', methods =['GET', 'POST'])
 def cotizacion():
+
 	precio = int(request.form['tamanio_holograma'])+int(request.form['ambiente_holograma'])+int(request.form['estilo_holograma'])+int(request.form['tipo_holograma'])
-	if request.form['tamanio_holograma'] == '5000':
-		tiempo = 15
-	elif request.form['tamanio_holograma'] == '7000':
+	if request.form['tamanio_holograma'] == '23000':
 		tiempo = 25
-	else:
+	elif request.form['tamanio_holograma'] == '28000':
 		tiempo = 30
+	else:
+		tiempo = 40
 	fecha_estimada = (datetime.now() + timedelta(days=tiempo)).strftime('%d/%m/%y')
 
 	cont1=forms.cont_cotizo(request.form)
@@ -127,7 +128,7 @@ def cotizacion():
 	</div>
 	<div class="container">
 	  <div class="row">
-	        <div class="col-12"><p>aqui va el texto sobre el trabjo, muy especifico</p></div>
+	        <div class="col-12"><p>aqui va el texto sobre el trabajo, muy especifico</p></div>
 	  </div>
 	</div>
 	<br>
@@ -186,8 +187,6 @@ def cotizacion():
 	    )
 	print("Enviamos correo a {}".format(receiver_email))
 
-
-
 	return render_template('hago_cotizacion.html', precio = precio, fecha_estimada = fecha_estimada)
 
 
@@ -211,22 +210,82 @@ def descargo_pdf():
 @app.route('/contacto', methods =['GET', 'POST'])
 def contacto():
 	sitio = 'contacto'
+
 	cont=forms.contacto(request.form)
 
 	if request.method=='POST' and cont.validate(): 
 		print(cont.name.data)
 		print(cont.email.data)
 		print(cont.text.data)
-		return render_template('nose.html', form=cont, sitio=sitio)
-	return render_template('contacto.html', form=cont, sitio=sitio)
+		
+	#Configuro el correo que se va a enviar
+	sender_email = "ingenium.developers@gmail.com"
+	receiver_email = cont.email.data
+	password = "Cugs2019"
+
+	message = MIMEMultipart("alternative")
+	message["Subject"] = "Contacto"
+	message["From"] = sender_email
+	message["To"] = receiver_email
+
+	# Create the plain-text and HTML version of your message
+	html = """\
+	<!DOCTYPE html>
+	<head>
+	  <title>Test</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport"     content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	    <meta http-equiv="x-ua-compatible" content="ie-edge">
+	    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<head>
+	  <style type="text/css">
+	  h1, h2, ul{text-align: center;}
+
+	  </style>
+	</head>
+
+	<body>
+	<div class="row">
+	        <div class="col-4">INGENIUM DEVELOPERS</div>
+	  </div>
+	  <div class="row">
+	        <div class="col-4">Recibimos tu mensaje: """ + cont.text.data + """</div>
+	  </div>
+	<h1><center>Hola <b>""" + cont.name.data + """</b>, en un plazo de 24 horas te contactáremos, solo se paciente.</center></h1>
+
+
+	</body>
+	</html>           
+
+	"""
+
+	# Turn these into plain/html MIMEText objects
+
+	part2 = MIMEText(html, "html")
+
+	# Add HTML/plain-text parts to MIMEMultipart message
+	# The email client will try to render the last part first
+
+	message.attach(part2)
+
+	# Create secure connection with server and send email
+	context = ssl.create_default_context()
+	with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as server:
+		server.login(sender_email, password)
+		server.sendmail(
+			sender_email, receiver_email, message.as_string()
+	    )
+	print("Enviamos correo a {}".format(receiver_email))
+
+	return render_template('contacto.html', form=cont, sitio=sitio, confirmacion="ok")
 
 @app.route('/faq')
 def faq():
 	sitio = 'faq'
 	return render_template('faq.html', sitio=sitio)
-
+"""
 if __name__=='__main__':
 	app.run(port=8080, debug=True)
-
+"""
 
 	
