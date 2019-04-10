@@ -3,7 +3,6 @@ from flask_wtf.csrf import CSRFProtect
 import pdfkit
 from datetime import datetime, timedelta
 import forms
-
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -99,19 +98,20 @@ def cotizacion():
 	<br>
 	<div class="container">
 	  <div class="row">
-	        <div class="col-2"><p>DATOS DE LA EMPRESA</p><p>LOGO OPCIONAL</p></div>
+	        <div class="col-2"><img src="https://github.com/rtcht/ig_p1/blob/master/static/image/log.jpg"></div>
 	  </div>
 	</div>
 	<br>
 	<div class="container">
 	  <div class="row justify-content-end">
-	        <div class="col-2">NO. COTIZACION</div>     
-	        <div class="col-2">FECHA</div>
+	        <div class="col-2">NO. COTIZACIÓN</div>     
+	       
 	  </div>
 	</div>
 	<div class="container">
 	  <div class="row justify-content-end">
-	        <div class="col-2">""" + str(datetime.now().strftime("%d/%m/%Y")) + """</div>
+	  	<div class="col-2">FECHA</div>
+	    <div class="col-2">""" + str(datetime.now().strftime("%d/%m/%Y")) + """</div>
 	  </div>
 	</div>
 	<br>
@@ -124,11 +124,6 @@ def cotizacion():
 	<div class="container">
 	  <div class="row">
 	        <div class="col-12"><p>DESCRIPCION DEL TRABAJO</p></div>
-	  </div>
-	</div>
-	<div class="container">
-	  <div class="row">
-	        <div class="col-12"><p>aqui va el texto sobre el trabajo, muy especifico</p></div>
 	  </div>
 	</div>
 	<br>
@@ -163,6 +158,16 @@ def cotizacion():
 	    <th class="colspan justify-content-end" colspan="3"> """ + str(precio) + """</th>
 	  </tr>
 	</table>
+
+		<div class="container">
+	  <div class="row">
+	        <div class="col-12"><p>* Esta cotización tiene una vigencia de 15 días.</p></div>
+	        <div class="col-12"><p>** Los precios pueden variar de acuerdo al mercado.</p></div>
+	        <div class="col-12"><p>*** Los precios mostrados en la cotización incluyen mano de obra y grastos de instalacion, 
+	        en caso de dudas comunicate con nosotros.</p></div>
+	  </div>
+	</div>
+
 	</body>
 	</html>           
 
@@ -217,67 +222,68 @@ def contacto():
 		print(cont.name.data)
 		print(cont.email.data)
 		print(cont.text.data)
-		
-	#Configuro el correo que se va a enviar
-	sender_email = "ingenium.developers@gmail.com"
-	receiver_email = cont.email.data
-	password = "Cugs2019"
+			
+		#Configuro el correo que se va a enviar
+		sender_email = "ingenium.developers@gmail.com"
+		receiver_email = cont.email.data
+		password = "Cugs2019"
 
-	message = MIMEMultipart("alternative")
-	message["Subject"] = "Contacto"
-	message["From"] = sender_email
-	message["To"] = receiver_email
+		message = MIMEMultipart("alternative")
+		message["Subject"] = "Contacto"
+		message["From"] = sender_email
+		message["To"] = receiver_email
 
-	# Create the plain-text and HTML version of your message
-	html = """\
-	<!DOCTYPE html>
-	<head>
-	  <title>Test</title>
-	    <meta charset="utf-8">
-	    <meta name="viewport"     content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	    <meta http-equiv="x-ua-compatible" content="ie-edge">
-	    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<head>
-	  <style type="text/css">
-	  h1, h2, ul{text-align: center;}
+		# Create the plain-text and HTML version of your message
+		html = """\
+		<!DOCTYPE html>
+		<head>
+		  <title>Test</title>
+		    <meta charset="utf-8">
+		    <meta name="viewport"     content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		    <meta http-equiv="x-ua-compatible" content="ie-edge">
+		    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<head>
+		  <style type="text/css">
+		  h1, h2, ul{text-align: center;}
 
-	  </style>
-	</head>
+		  </style>
+		</head>
 
-	<body>
-	<div class="row">
-	        <div class="col-4">INGENIUM DEVELOPERS</div>
-	  </div>
-	  <div class="row">
-	        <div class="col-4">Recibimos tu mensaje: """ + cont.text.data + """</div>
-	  </div>
-	<h1><center>Hola <b>""" + cont.name.data + """</b>, en un plazo de 24 horas te contactáremos, solo se paciente.</center></h1>
+		<body>
+		<div class="row">
+		        <div class="col-4">INGENIUM DEVELOPERS</div>
+		  </div>
+		  <div class="row">
+		        <div class="col-4">Recibimos tu mensaje: """ + cont.text.data + """</div>
+		  </div>
+		<h1><center>Hola <b>""" + cont.name.data + """</b>, en un plazo de 24 horas te contactáremos, solo se paciente.</center></h1>
 
 
-	</body>
-	</html>           
+		</body>
+		</html>           
 
-	"""
+		"""
 
-	# Turn these into plain/html MIMEText objects
+		# Turn these into plain/html MIMEText objects
 
-	part2 = MIMEText(html, "html")
+		part2 = MIMEText(html, "html")
 
-	# Add HTML/plain-text parts to MIMEMultipart message
-	# The email client will try to render the last part first
+		# Add HTML/plain-text parts to MIMEMultipart message
+		# The email client will try to render the last part first
 
-	message.attach(part2)
+		message.attach(part2)
 
-	# Create secure connection with server and send email
-	context = ssl.create_default_context()
-	with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as server:
-		server.login(sender_email, password)
-		server.sendmail(
-			sender_email, receiver_email, message.as_string()
-	    )
-	print("Enviamos correo a {}".format(receiver_email))
+		# Create secure connection with server and send email
+		context = ssl.create_default_context()
+		with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as server:
+			server.login(sender_email, password)
+			server.sendmail(
+				sender_email, receiver_email, message.as_string()
+		    )
+		print("Enviamos correo a {}".format(receiver_email))
 
-	return render_template('contacto.html', form=cont, sitio=sitio, confirmacion="ok")
+		return render_template('contacto.html', form=cont, sitio=sitio, confirmacion="ok")
+	return render_template('contacto.html', form=cont, sitio=sitio)
 
 @app.route('/faq')
 def faq():

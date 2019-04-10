@@ -201,6 +201,11 @@ a.btn-card {
     color: #fff;
 }
 
+#wall{
+ 
+  height: 500px;
+}
+
 /*
   div[class^="col"] {
       border-right: 1px solid black;

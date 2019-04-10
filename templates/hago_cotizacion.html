@@ -1,6 +1,6 @@
 {% extends 'base/base.html' %}
 {% block contenido %}
-
+<meta http-equiv="Refresh" content="12; url= http://rtcht.pythonanywhere.com/">
 <br>
 <br>
 <br>
@@ -13,15 +13,18 @@
   			<div class="col-12">
 	   			<h2  align="justify">Tu holograma costara $ {{ precio }} pesos y estará listo para el día
           {{ fecha_estimada }}!!</h2>
+          <p class="lead">Enviamos tu cotización por correo electronico y si tienes alguna duda no dudes en contactarnos.</p>
           <br>
-	    		<p class="lead">Si quieres descargar el PDF por favor da clic 
-				<a href="{{ url_for ('cotizacion')}}">aquí</a></p>
     		</div>
+        <div class="row">
+        <div class="col-12">
+          <p class="lead">En unos segundos serás enviado automáticamente al inicio.</p>
+           <p class="lead">Si no te gusta esperar, puedes dar click 
+        <a href="{{ url_for ('index' )}}">aquí</a></p>
+        </div>
+      </div>
       </div>
     </div>
     </section>
-
-
-
 
 {% endblock %}
