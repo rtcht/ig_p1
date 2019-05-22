@@ -133,23 +133,23 @@ def cotizacion():
 	    <th>CANTIDAD</th>
 	    <th>PRECIO UNIT</th>
 	  </tr>
-	  <tr>
-	    <th>""" + ("Chico" if request.form['tamanio_holograma'] == "5000" else ("Mediano" if request.form['tamanio_holograma'] == "7000" else "Grande")) + """</th>
+	<tr>
+	    <th>""" + ("Chico" if request.form['tamanio_holograma'] == "23000" else ("Mediano" if request.form['tamanio_holograma'] == "28000" else "Grande")) + """</th>
 	    <th>1</th>
 	    <th>""" + request.form['tamanio_holograma'] + """</th>
 	  </tr>
 	  <tr>
-	    <th>""" + ("Iluminado" if request.form['ambiente_holograma'] == "1500" else ("Oscuro" ))+ """</th>
+	    <th>""" + ("Iluminado" if request.form['ambiente_holograma'] == "8000" else ("Oscuro" ))+ """</th>
 	    <th>1</th>
 	    <th>""" + request.form['ambiente_holograma'] + """</th>
 	  </tr>
 	  <tr>
-	    <th>""" + ("Madera" if request.form['estilo_holograma'] == "2100" else ("Aluminio" ))+ """</th>
+	    <th>""" + ("Madera" if request.form['estilo_holograma'] == "6000" else ("Aluminio" ))+ """</th>
 	    <th>1</th>
 	    <th>""" + request.form['estilo_holograma'] + """</th>
 	  </tr>
 	  <tr>
-	    <th> """ + ("Estatico" if request.form['tipo_holograma'] == "7000" else ("Dinamico" if request.form['tipo_holograma'] == "8000" else "Informativo")) + """</th>
+	    <th> """ + ("Estatico" if request.form['tipo_holograma'] == "15000" else ("Dinamico" if request.form['tipo_holograma'] == "35000" else "Informativo")) + """</th>
 	    <th>1</th>
 	    <th> """ + request.form['tipo_holograma']  + """ </th>
 	  </tr>
